@@ -14,9 +14,14 @@ public class REPLService {
 
 
         Scanner scanner = new Scanner(commandInputStream.getInputStream());
-        String command = scanner.nextLine();
+
+        String command = "";
+        do {
+            command = scanner.nextLine();
+            commandOutputStream.getOutStream().println(command);
+        } while (!command.equalsIgnoreCase("q"));
 
 
-        commandOutputStream.getOutStream().print(command);
+
     }
 }
