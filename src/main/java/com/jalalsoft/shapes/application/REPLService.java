@@ -20,8 +20,5 @@ public class REPLService {
             command = scanner.nextLine();
             commandOutputStream.getOutStream().println(command);
         } while (!command.equalsIgnoreCase("q"));
-
-
-
     }
 }
