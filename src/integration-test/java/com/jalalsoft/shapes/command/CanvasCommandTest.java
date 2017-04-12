@@ -13,7 +13,7 @@ public class CanvasCommandTest {
     public void givenCanvasCommand_whenWidthHeightProvided_theDrawCanvas(){
 
         String canvasUserInput = "5 5";
-        Command command = new CreateCanvasCommand();
+        Command command = new CanvasCommand();
 
         String drawing = command.execute(canvasUserInput);
 
@@ -27,4 +27,25 @@ public class CanvasCommandTest {
         assertEquals("Canvas isn't drawn correctly", expectedDrawing, drawing);
 
     }
+    @Test
+    public void givenCanvasCommand_whenWidthIsMoreThanHeight_theDrawCanvas(){
+
+        String canvasUserInput = "5 7";
+        Command command = new CanvasCommand();
+
+        String drawing = command.execute(canvasUserInput);
+
+        String expectedDrawing = "-------\n" +
+                "|     |\n" +
+                "|     |\n" +
+                "|     |\n" +
+                "|     |\n" +
+                "|     |\n" +
+                "|     |\n" +
+                "|     |\n" +
+                "-------\n";
+        assertEquals("Canvas isn't drawn correctly", expectedDrawing, drawing);
+
+    }
+
 }

@@ -13,7 +13,7 @@ public class CommandFactory {
     /* Factory pattern */
     public static CommandFactory init() {
         final CommandFactory cf = new CommandFactory();
-        Command cmd = new CreateCanvasCommand();
+        Command cmd = new CanvasCommand();
         Command quitCmd = new QuitCommand();
         cf.addCommand(cmd);
 

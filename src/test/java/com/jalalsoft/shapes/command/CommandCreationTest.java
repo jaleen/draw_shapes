@@ -24,11 +24,11 @@ public class CommandCreationTest {
     public void givenCreateCanvasRequest_thenCanvasCommandCreated() {
 
         String cmd = "C";
-        Command mockCreateCanvasCommand = mock(CreateCanvasCommand.class);
+        Command mockCreateCanvasCommand = mock(CanvasCommand.class);
         when(mockCreateCanvasCommand.getName()).thenReturn(cmd);
         commandFactory.addCommand(mockCreateCanvasCommand);
         Command command = commandFactory.getCommand(cmd);
-        assertThat(command, instanceOf(CreateCanvasCommand.class));
+        assertThat(command, instanceOf(CanvasCommand.class));
     }
 
     @Test
@@ -36,7 +36,7 @@ public class CommandCreationTest {
 
         String cmd = "C";
         Command command = commandFactory.getCommand(cmd);
-        assertThat("Create canvas command not initialised yet.", command, instanceOf(CreateCanvasCommand.class));
+        assertThat("Create canvas command not initialised yet.", command, instanceOf(CanvasCommand.class));
     }
 
 }
