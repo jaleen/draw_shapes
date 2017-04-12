@@ -1,5 +1,6 @@
 package com.jalalsoft.shapes.application;
 
+import com.jalalsoft.shapes.command.CommandFactory;
 import com.jalalsoft.shapes.io.CommandInputStream;
 import com.jalalsoft.shapes.io.CommandOutputStream;
 
@@ -12,7 +13,7 @@ public class App {
 
     public static void main(String[] args) throws IOException {
 
-        new REPLService().takeCommands(new CommandInputStream(System.in), new CommandOutputStream(System.out));
+        new REPLService(CommandFactory.init()).takeCommands(new CommandInputStream(System.in), new CommandOutputStream(System.out));
 
 
     }

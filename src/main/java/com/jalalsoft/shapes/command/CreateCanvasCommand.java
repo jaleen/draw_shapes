@@ -8,4 +8,15 @@ public class CreateCanvasCommand extends Command{
     protected CreateCanvasCommand() {
         super(commandName);
     }
+
+    @Override
+    public String execute(String arguments) {
+        return "-------\n" +
+                "|     |\n" +
+                "|     |\n" +
+                "|     |\n" +
+                "|     |\n" +
+                "|     |\n" +
+                "-------\n";
+    }
 }

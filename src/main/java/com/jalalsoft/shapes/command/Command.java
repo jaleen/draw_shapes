@@ -11,4 +11,6 @@ public abstract class Command {
     String getName(){
         return commandName;
     }
+
+    public abstract String execute(String arguments);
 }

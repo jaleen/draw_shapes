@@ -14,6 +14,7 @@ public class CommandFactory {
     public static CommandFactory init() {
         final CommandFactory cf = new CommandFactory();
         Command cmd = new CreateCanvasCommand();
+        Command quitCmd = new QuitCommand();
         cf.addCommand(cmd);
 
         return cf;
