@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by jalal.deen on 12/04/2017.
  */
-public class DrawBoundaryLinesTest {
+public class BoundaryLinesMarkingTest {
     @Test
     public void whenXCoordinatesAreSame_thenDrawVerticalLine() {
 
