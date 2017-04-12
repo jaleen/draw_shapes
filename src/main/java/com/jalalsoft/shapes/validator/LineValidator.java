@@ -13,6 +13,12 @@ public class LineValidator {
         }else if(line.getX2()<1|| line.getX2()>canvas.getWidth()-2){
             throw new IllegalArgumentException("x2 is out of bounds of canvas.");
         }
+        if(line.getY1()<1|| line.getY1()>canvas.getHeight()-2){
+            throw new IllegalArgumentException("y1 is out of bounds of canvas.");
+        }else if(line.getY2()<1|| line.getY2()>canvas.getHeight()-2){
+            throw new IllegalArgumentException("y2 is out of bounds of canvas.");
+        }
         return true;
     }
+
 }

@@ -59,5 +59,86 @@ public class LineValidatorTest {
 
         lineValidator.validate(line, canvas);
     }
+    @Test(expected = IllegalArgumentException.class)
+    public void whenY1CoordinateAreGreaterThanCanvas_thenThrowException() {
+
+        int y1 = 6;
+        Line line = new Line(1, y1, 1, 1);
+
+        int width = 5;
+        int height = 5;
+        Canvas canvas = null;
+        canvas = new Canvas(width, height);
+
+        lineValidator.validate(line, canvas);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenY2CoordinateAreGreaterThanCanvas_thenThrowException() {
+
+        int y2 = 6;
+        Line line = new Line(1, 1, 1, y2);
+
+        int width = 5;
+        int height = 5;
+        Canvas canvas = null;
+        canvas = new Canvas(width, height);
+
+        lineValidator.validate(line, canvas);
+    }
+    @Test(expected = IllegalArgumentException.class)
+    public void whenX1CoordinateAreLessThanOne_thenThrowException() {
+
+        int x1 = 0;
+        Line line = new Line(x1, 1, 1, 1);
+        int width = 5;
+        int height = 5;
+        Canvas canvas = null;
+        canvas = new Canvas(width, height);
+
+        lineValidator.validate(line, canvas);
+    }
+
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenX2CoordinateAreLessThanOne_thenThrowException() {
+
+        int x2 = -2;
+        Line line = new Line(1, 1, x2, 1);
+        int width = 5;
+        int height = 5;
+        Canvas canvas = null;
+        canvas = new Canvas(width, height);
+
+        lineValidator.validate(line, canvas);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenY1CoordinateAreLessThanOne_thenThrowException() {
+
+        int y1 = 0;
+        Line line = new Line(1, y1, 1, 1);
+        int width = 5;
+        int height = 5;
+        Canvas canvas = null;
+        canvas = new Canvas(width, height);
+
+        lineValidator.validate(line, canvas);
+    }
+
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenY2CoordinateAreLessThanOne_thenThrowException() {
+
+        int y2 = 0;
+        Line line = new Line(1, 1, 1, y2);
+        int width = 5;
+        int height = 5;
+        Canvas canvas = null;
+        canvas = new Canvas(width, height);
+
+        lineValidator.validate(line, canvas);
+    }
+
 
 }
