@@ -32,5 +32,32 @@ public class LineValidatorTest {
 
         assertTrue("For valid coordinates validation should be successful", valid);
     }
+    @Test(expected = IllegalArgumentException.class)
+    public void whenX1CoordinateAreGreaterThanCanvas_thenThrowException() {
+
+        int x1 = 6;
+        Line line = new Line(x1, 1, 1, 1);
+
+        int width = 5;
+        int height = 5;
+        Canvas canvas = null;
+        canvas = new Canvas(width, height);
+
+        lineValidator.validate(line, canvas);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenX2CoordinateAreGreaterThanCanvas_thenThrowException() {
+
+        int x2 = 6;
+        Line line = new Line(1, 1, x2, 1);
+
+        int width = 5;
+        int height = 5;
+        Canvas canvas = null;
+        canvas = new Canvas(width, height);
+
+        lineValidator.validate(line, canvas);
+    }
 
 }

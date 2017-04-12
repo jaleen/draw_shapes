@@ -36,5 +36,12 @@ public class Canvas {
         }
         return lines;
     }
+    public int getWidth() {
+        return canvas[0].length;
+    }
+
+    public int getHeight() {
+        return canvas.length;
+    }
 }
 
