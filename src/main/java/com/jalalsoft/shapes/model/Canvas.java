@@ -8,6 +8,13 @@ public class Canvas {
     private char[][] canvas;
 
     public Canvas(int width, int height) {
+        if (width < 1) {
+            throw new IllegalArgumentException("Invalid canvas width:" + width + " It should always be more than 1.");
+        }
+        if (height < 1) {
+            throw new IllegalArgumentException("Invalid canvas height:" + height + " It should always be more than 1.");
+
+        }
 
         //added two (+2) more spaces for boundary lines.
         canvas = new char[height + 2][width + 2];

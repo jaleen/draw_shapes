@@ -69,4 +69,24 @@ public class MarkCanvasTest {
                         "---------\n",
                 canvas.toString());
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenWidthIsLessThanOne_thenShouldThrowException() {
+
+        int width = 0;
+        int height = 8;
+
+        new Canvas(width, height);
+
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenHeightIsLessThanOne_thenShouldThrowException() {
+
+        int width = 1;
+        int height = 0;
+
+        new Canvas(width, height);
+
+    }
 }
