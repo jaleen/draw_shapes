@@ -2,8 +2,11 @@ package com.jalalsoft.shapes.command;
 
 import static org.mockito.Mockito.*;
 
+import com.jalalsoft.shapes.config.Configuration;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.IOException;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertThat;
@@ -16,8 +19,9 @@ public class CommandCreationTest {
     CommandFactory commandFactory = null;
 
     @Before
-    public void setup() {
-        commandFactory = CommandFactory.init();
+    public void setup() throws IOException {
+        Configuration configuration = Configuration.init("shapes-test.properties");
+        commandFactory = CommandFactory.init(configuration);
     }
 
     @Test

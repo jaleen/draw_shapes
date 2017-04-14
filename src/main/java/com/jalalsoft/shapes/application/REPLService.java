@@ -28,6 +28,8 @@ public class REPLService {
         do {
             command = read(scanner);
 
+            if(command == null) continue;
+
             String output = evaluate(command);
 
             commandOutputStream.getOutStream().println(output);
@@ -46,6 +48,10 @@ public class REPLService {
     }
 
     private String read(Scanner scanner) {
-        return scanner.nextLine();
+        String command = null;
+        if(scanner.hasNextLine()) {
+            command = scanner.nextLine();
+        }
+        return command;
     }
 }

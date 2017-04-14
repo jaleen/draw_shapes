@@ -115,7 +115,7 @@ public class CommandsInputTest {
 
         when(commandFactory.getCommand(canvasCommandName)).thenReturn(canvasCommand);
         when(commandFactory.getCommand(quitCommandName)).thenReturn(quitCommand);
-        when(commandFactory.getCommand(lineCommandName)).thenReturn(lineCommand);
+        //when(commandFactory.getCommand(lineCommandName)).thenReturn(lineCommand);
 
         when(canvasCommand.execute(any())).thenReturn(canvasOuput);
         when(quitCommand.execute(any())).thenReturn(quitCommandName);
