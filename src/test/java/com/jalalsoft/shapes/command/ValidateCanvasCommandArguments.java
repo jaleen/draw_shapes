@@ -80,4 +80,32 @@ public class ValidateCanvasCommandArguments {
 
         fail("Expected Illegal Arguments Exception when height argument is not provided");
     }
+    @Test (expected = IllegalArgumentException.class)
+    public void whenMissingHeightAndWidth_thenThrowIllegalArguments(){
+        CanvasCommand canvasCommand = new CanvasCommand(canvasMarker);
+
+        String arguments = "asdfdsafsad";
+        canvasCommand.execute(arguments);
+
+        fail("Expected Illegal Arguments Exception when height argument is not provided");
+    }
+    @Test (expected = IllegalArgumentException.class)
+    public void whenBothParametersMissing_thenThrowIllegalArguments(){
+        CanvasCommand canvasCommand = new CanvasCommand(canvasMarker);
+
+        String arguments = "";
+        canvasCommand.execute(arguments);
+
+        fail("Expected Illegal Arguments Exception when height argument is not provided");
+    }
+    @Test (expected = IllegalArgumentException.class)
+    public void whenBothParametersNull_thenThrowIllegalArguments(){
+        CanvasCommand canvasCommand = new CanvasCommand(canvasMarker);
+
+        String arguments = null;
+        canvasCommand.execute(arguments);
+
+        fail("Expected Illegal Arguments Exception when height argument is not provided");
+    }
+
 }
