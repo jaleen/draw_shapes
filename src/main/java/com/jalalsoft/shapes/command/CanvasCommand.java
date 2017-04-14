@@ -3,6 +3,8 @@ package com.jalalsoft.shapes.command;
 import com.jalalsoft.shapes.marker.CanvasMarker;
 import com.jalalsoft.shapes.model.Canvas;
 
+import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /**
@@ -21,11 +23,17 @@ public class CanvasCommand extends Command {
     public String execute(String arguments) {
         Scanner scanner = new Scanner(arguments);
 
-        int width = scanner.nextInt();
-        int height = scanner.nextInt();
+        int height;
+        int width;
+
+        try {
+            width = scanner.nextInt();
+            height = scanner.nextInt();
+        }catch (NoSuchElementException noSuchElementException){
+            throw new IllegalArgumentException("Incorrect canvas arguments. It should be in format 'c width height' e.g. c 5 7");
+        }
 
         Canvas canvas = new Canvas(width, height);
-
         canvasMarker.markBoundary(canvas);
 
         return canvas.toString();
