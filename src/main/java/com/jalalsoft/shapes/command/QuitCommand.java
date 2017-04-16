@@ -6,13 +6,12 @@ package com.jalalsoft.shapes.command;
 public class QuitCommand extends Command {
 
     private static final String commandName = "q";
-    protected QuitCommand() {
+    public QuitCommand() {
         super(commandName);
     }
 
     @Override
     public String execute(String arguments) {
-        //@TODO quit application here.
-        return "exit(0)";
+        return "Good Bye.";
     }
 }

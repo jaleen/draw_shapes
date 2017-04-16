@@ -2,6 +2,7 @@ package com.jalalsoft.shapes.application;
 
 import com.jalalsoft.shapes.command.Command;
 import com.jalalsoft.shapes.command.CommandFactory;
+import com.jalalsoft.shapes.command.QuitCommand;
 import com.jalalsoft.shapes.io.CommandInputStream;
 import com.jalalsoft.shapes.io.CommandOutputStream;
 
@@ -21,35 +22,46 @@ public class REPLService {
 
     public void takeCommands(CommandInputStream commandInputStream, CommandOutputStream commandOutputStream) throws IOException {
 
-
         Scanner scanner = new Scanner(commandInputStream.getInputStream());
+        QuitCommand quitCommand = new QuitCommand();
 
         String command;
         do {
             command = read(scanner);
 
-            if(command == null) continue;
+            if (command == null) continue;
 
             String output = evaluate(command);
+            if(output==null){
+                commandOutputStream.getOutStream().println("Invalid command.");
+                continue;
+            }
 
             commandOutputStream.getOutStream().println(output);
-        } while (!command.equalsIgnoreCase("q"));
+        } while (command == null || !command.equalsIgnoreCase(quitCommand.getName()));
     }
 
     private String evaluate(String userCommand) {
         String output;
         Scanner scanner = new Scanner(userCommand);
         Command cmd = commandFactory.getCommand(scanner.next());
+        if(cmd==null){
+            return null;
+        }
         String arguments = null;
         if (scanner.hasNext())
             arguments = scanner.nextLine();
-        output = cmd.execute(arguments);
+        try {
+            output = cmd.execute(arguments);
+        }catch (IllegalArgumentException exception){
+            output=exception.getMessage();
+        }
         return output;
     }
 
     private String read(Scanner scanner) {
         String command = null;
-        if(scanner.hasNextLine()) {
+        if (scanner.hasNextLine()) {
             command = scanner.nextLine();
         }
         return command;

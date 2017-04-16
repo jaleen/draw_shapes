@@ -55,4 +55,7 @@ task integrationTest(type: Test) {
 tasks.withType(Test) {
     reports.html.destination = file("${reporting.baseDir}/${name}")
 }
+run {
+    standardInput = System.in
+}
 
