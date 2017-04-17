@@ -4,6 +4,7 @@ import com.jalalsoft.shapes.marker.LineMarker;
 import com.jalalsoft.shapes.model.Canvas;
 import com.jalalsoft.shapes.model.Line;
 
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /**
@@ -22,16 +23,24 @@ public class LineCommand extends Command {
     @Override
     public String execute(String commandArguments) {
 
-        Scanner scanner = new Scanner(commandArguments);
+        if(commandArguments==null){
+            throw new IllegalArgumentException("Invalid line command. Use format L x1 y1 x2 y2 e.g. L 10 12 10 16");
+        }
+        try {
+            Scanner scanner = new Scanner(commandArguments);
 
-        int x1 = scanner.nextInt();
-        int y1 = scanner.nextInt();
-        int x2 = scanner.nextInt();
-        int y2 = scanner.nextInt();
 
-        Line line = new Line(x1,y1,x2,y2);
+            int x1 = scanner.nextInt();
+            int y1 = scanner.nextInt();
+            int x2 = scanner.nextInt();
+            int y2 = scanner.nextInt();
 
-        lineMarker.mark(line,Canvas.getCurrentCanvas());
+            Line line = new Line(x1, y1, x2, y2);
+
+            lineMarker.mark(line, Canvas.getCurrentCanvas());
+        }catch (NoSuchElementException nse){
+            throw new IllegalArgumentException("Invalid line command. Use format L x1 y1 x2 y2 e.g. L 10 12 10 16");
+        }
         return Canvas.getCurrentCanvas().toString();
     }
 }

@@ -37,4 +37,42 @@ public class LineCommandTest {
         verify(lineMarker, times(1)).mark(any(Line.class), eq(canvas));
 
     }
+    @Test (expected = IllegalArgumentException.class)
+    public void givenLineCommand_whenAllArgumentsMissing_thenThrowIllegalArgumentException() {
+
+        String lineCommandInput = "";
+        Command command = new LineCommand(lineMarker);
+
+        command.execute(lineCommandInput);
+
+    }
+    @Test (expected = IllegalArgumentException.class)
+    public void givenLineCommand_whenAllArgumentsNull_thenThrowIllegalArgumentException() {
+
+        String lineCommandInput = null;
+        Command command = new LineCommand(lineMarker);
+
+        command.execute(lineCommandInput);
+
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void givenLineCommand_whenSomeArgumentsMissing_thenThrowIllegalArgumentException() {
+
+        String lineCommandInput = "1 2 3";
+        Command command = new LineCommand(lineMarker);
+
+        command.execute(lineCommandInput);
+
+    }
+    @Test (expected = IllegalArgumentException.class)
+    public void givenLineCommand_whenSomeArgumentsHaveInvalidChars_thenThrowIllegalArgumentException() {
+
+        String lineCommandInput = "1 adf2 3c 2 ";
+        Command command = new LineCommand(lineMarker);
+
+        command.execute(lineCommandInput);
+
+    }
+
 }
