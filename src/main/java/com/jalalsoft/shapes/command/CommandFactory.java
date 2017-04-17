@@ -2,6 +2,7 @@ package com.jalalsoft.shapes.command;
 
 import com.jalalsoft.shapes.config.Configuration;
 import com.jalalsoft.shapes.marker.CanvasMarker;
+import com.jalalsoft.shapes.marker.ColourFillMarker;
 import com.jalalsoft.shapes.marker.LineMarker;
 import com.jalalsoft.shapes.marker.RectangleMarker;
 import com.jalalsoft.shapes.validator.LineValidator;
@@ -23,13 +24,19 @@ public class CommandFactory {
         Command canvasCommand = createCanvasCommand(configuration);
         Command lineCommand = createLineCommand(configuration);
         Command rectangleCommand = createRectangleCommand(configuration);
+        Command colourFillCommand = createColourFillCommand();
         Command quitCmd = new QuitCommand();
         cf.addCommand(canvasCommand);
         cf.addCommand(quitCmd);
         cf.addCommand(lineCommand);
         cf.addCommand(rectangleCommand);
+        cf.addCommand(colourFillCommand);
 
         return cf;
+    }
+
+    private static Command createColourFillCommand() {
+        return new ColourFillCommand(new ColourFillMarker());
     }
 
     private static Command createRectangleCommand(Configuration configuration) {

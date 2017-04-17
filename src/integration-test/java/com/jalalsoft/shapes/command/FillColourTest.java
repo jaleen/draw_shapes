@@ -1,5 +1,6 @@
 package com.jalalsoft.shapes.command;
 
+import com.jalalsoft.shapes.marker.ColourFillMarker;
 import com.jalalsoft.shapes.model.Canvas;
 import org.junit.Test;
 
@@ -20,7 +21,7 @@ public class FillColourTest {
 
         int width = 4;
         int height = 4;
-        Command command =  new ColourFillCommand();
+        Command command =  new ColourFillCommand(new ColourFillMarker());
         Canvas canvas = new Canvas(width, height);
         command.execute(fillCommandArgs);
 
