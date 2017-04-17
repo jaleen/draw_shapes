@@ -1,6 +1,7 @@
 package com.jalalsoft.shapes.application;
 
 import com.jalalsoft.shapes.command.CommandFactory;
+import com.jalalsoft.shapes.config.Configuration;
 import com.jalalsoft.shapes.io.CommandInputStream;
 import com.jalalsoft.shapes.io.CommandOutputStream;
 
@@ -13,7 +14,9 @@ public class App {
 
     public static void main(String[] args) throws IOException {
 
-        new REPLService(CommandFactory.init()).takeCommands(new CommandInputStream(System.in), new CommandOutputStream(System.out));
+        Configuration configuration = Configuration.init("shapes.properties");
+
+        new REPLService(CommandFactory.init(configuration)).takeCommands(new CommandInputStream(System.in), new CommandOutputStream(System.out));
 
 
     }

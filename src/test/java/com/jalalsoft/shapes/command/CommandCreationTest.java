@@ -2,8 +2,11 @@ package com.jalalsoft.shapes.command;
 
 import static org.mockito.Mockito.*;
 
+import com.jalalsoft.shapes.config.Configuration;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.IOException;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertThat;
@@ -16,19 +19,20 @@ public class CommandCreationTest {
     CommandFactory commandFactory = null;
 
     @Before
-    public void setup() {
-        commandFactory = CommandFactory.init();
+    public void setup() throws IOException {
+        Configuration configuration = Configuration.init("shapes-test.properties");
+        commandFactory = CommandFactory.init(configuration);
     }
 
     @Test
     public void givenCreateCanvasRequest_thenCanvasCommandCreated() {
 
         String cmd = "C";
-        Command mockCreateCanvasCommand = mock(CreateCanvasCommand.class);
+        Command mockCreateCanvasCommand = mock(CanvasCommand.class);
         when(mockCreateCanvasCommand.getName()).thenReturn(cmd);
         commandFactory.addCommand(mockCreateCanvasCommand);
         Command command = commandFactory.getCommand(cmd);
-        assertThat(command, instanceOf(CreateCanvasCommand.class));
+        assertThat(command, instanceOf(CanvasCommand.class));
     }
 
     @Test
@@ -36,7 +40,7 @@ public class CommandCreationTest {
 
         String cmd = "C";
         Command command = commandFactory.getCommand(cmd);
-        assertThat("Create canvas command not initialised yet.", command, instanceOf(CreateCanvasCommand.class));
+        assertThat("Create canvas command not initialised yet.", command, instanceOf(CanvasCommand.class));
     }
 
 }
