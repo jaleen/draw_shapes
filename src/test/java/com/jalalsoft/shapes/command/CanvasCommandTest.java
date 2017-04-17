@@ -16,7 +16,7 @@ import static org.mockito.Mockito.verify;
  * Created by jalal.deen on 14/04/2017.
  */
 @RunWith(MockitoJUnitRunner.class)
-public class ValidateCanvasCommandArguments {
+public class CanvasCommandTest {
 
     @Mock
     private CanvasMarker canvasMarker;
