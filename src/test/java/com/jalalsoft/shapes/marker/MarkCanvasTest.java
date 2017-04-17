@@ -1,8 +1,6 @@
-package com.jalalsoft.shapes.canvas;
+package com.jalalsoft.shapes.marker;
 
-import com.jalalsoft.shapes.marker.CanvasMarker;
 import com.jalalsoft.shapes.model.Canvas;
-
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

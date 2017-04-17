@@ -8,7 +8,19 @@ import com.jalalsoft.shapes.model.Line;
  */
 public class LineMarker {
 
+    private final char lineChar;
 
+    public LineMarker(char lineChar){
+
+        this.lineChar = lineChar;
+    }
+    public LineMarker(){
+        this.lineChar='x';
+    }
+
+    public void mark(Line line, Canvas canvas) {
+        mark(line,canvas,lineChar);
+    }
     public void mark(Line line, Canvas canvas, char lineChar) {
 
 

@@ -2,6 +2,7 @@ package com.jalalsoft.shapes.command;
 
 import com.jalalsoft.shapes.config.Configuration;
 import com.jalalsoft.shapes.marker.CanvasMarker;
+import com.jalalsoft.shapes.marker.LineMarker;
 
 import java.util.HashMap;
 
@@ -16,12 +17,21 @@ public class CommandFactory {
     /* Factory pattern */
     public static CommandFactory init(Configuration configuration) {
         final CommandFactory cf = new CommandFactory();
-        Command cmd = createCanvasCommand(configuration);
+        Command canvasCommand = createCanvasCommand(configuration);
+        Command lineCommand = createLineCommand(configuration);
         Command quitCmd = new QuitCommand();
-        cf.addCommand(cmd);
+        cf.addCommand(canvasCommand);
         cf.addCommand(quitCmd);
+        cf.addCommand(lineCommand);
 
         return cf;
+    }
+
+    private static Command createLineCommand(Configuration configuration) {
+        String lineChar = configuration.getPropertyValue("lineCharacter");
+        LineMarker lineMarker= new  LineMarker(lineChar.charAt(0));
+        return new LineCommand(lineMarker);
+
     }
 
     private static Command createCanvasCommand(Configuration configuration) {

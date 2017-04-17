@@ -1,4 +1,4 @@
-package com.jalalsoft.shapes.canvas;
+package com.jalalsoft.shapes.marker;
 
 import com.jalalsoft.shapes.marker.LineMarker;
 import com.jalalsoft.shapes.model.Canvas;

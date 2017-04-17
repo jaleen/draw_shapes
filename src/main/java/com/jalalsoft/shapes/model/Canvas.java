@@ -6,6 +6,7 @@ package com.jalalsoft.shapes.model;
 public class Canvas {
 
     private char[][] canvas;
+    private static Canvas currentCanvas;
 
     public Canvas(int width, int height) {
         if (width < 1) {
@@ -18,6 +19,7 @@ public class Canvas {
 
         //added two (+2) more spaces for boundary lines.
         canvas = new char[height + 2][width + 2];
+        currentCanvas = this;
     }
 
     public void mark(int x, int y, char lineChar) {
@@ -49,6 +51,10 @@ public class Canvas {
 
     public int getHeight() {
         return canvas.length;
+    }
+    public static Canvas getCurrentCanvas(){
+
+        return currentCanvas;
     }
 }
 

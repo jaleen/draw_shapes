@@ -16,7 +16,8 @@ import static org.mockito.Mockito.when;
  * Created by jalal.deen on 12/04/2017.
  */
 @RunWith(MockitoJUnitRunner.class)
-public class CanvasCommandTest {
+public class DrawCanvasTest {
+
 
     private CanvasMarker canvasMarker;
 
