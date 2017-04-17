@@ -60,4 +60,19 @@ public class CommandCreationTest {
         Command command = commandFactory.getCommand(cmd);
         assertThat("Create Line command not initialised yet.", command, instanceOf(LineCommand.class));
     }
+
+    @Test
+    public void whenGetRectangleCommandRequest_thenRectangleCommandAlreadyInitialised() {
+
+        String cmd = "R";
+        Command command = commandFactory.getCommand(cmd);
+        assertThat("Create rectangle command not initialised yet.", command, instanceOf(RectangleCommand.class));
+    }
+    @Test
+    public void whenGetFillColourRequest_thenColourFillCommandAlreadyInitialised() {
+
+        String cmd = "b";
+        Command command = commandFactory.getCommand(cmd);
+        assertThat("Create rectangle command not initialised yet.", command, instanceOf(ColourFillCommand.class));
+    }
 }

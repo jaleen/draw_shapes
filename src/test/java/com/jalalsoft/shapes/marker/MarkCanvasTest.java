@@ -1,13 +1,11 @@
 package com.jalalsoft.shapes.marker;
 
 import com.jalalsoft.shapes.model.Canvas;
-import com.jalalsoft.shapes.validator.LineValidator;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 
 /**
@@ -91,4 +89,58 @@ public class MarkCanvasTest {
         new Canvas(width, height);
 
     }
+
+    @Test
+    public void whenCanvasPointAlreadyMarked_thenReturnTrue(){
+
+        int width = 3;
+        int height = 3;
+
+        Canvas canvas = new Canvas(width, height);
+        canvas.mark(1,1,'x');
+
+        assertTrue("Canvas should have been marked.", canvas.isMarked(1,1));
+
+    }
+
+    @Test
+    public void whenCanvasPointIsNotMarked_thenReturnFalse(){
+
+        int width = 3;
+        int height = 3;
+
+        Canvas canvas = new Canvas(width, height);
+        canvas.mark(1,1,'x');
+
+        assertFalse("Canvas should'nt be marked.", canvas.isMarked(1,2));
+
+    }
+    @Test
+    public void whenCanvasPointIsWithinCanvas_thenReturnTrue(){
+
+        int width = 3;
+        int height = 3;
+
+        Canvas canvas = new Canvas(width, height);
+
+
+        assertTrue("Canvas should'nt be marked.", canvas.isWithinCanvas(1,2));
+
+    }
+
+    @Test
+    public void whenCanvasPointIsNotWithinCanvas_thenReturnFalse(){
+
+        int width = 3;
+        int height = 3;
+
+        Canvas canvas = new Canvas(width, height);
+
+
+        assertFalse("Canvas should'nt be marked.", canvas.isWithinCanvas(-1,2));
+
+    }
+
+
+
 }

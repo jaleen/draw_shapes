@@ -56,5 +56,25 @@ public class Canvas {
 
         return currentCanvas;
     }
+
+    public boolean isMarked(int x, int y) {
+
+        char mark = canvas[y][x];
+        if(Character.MIN_VALUE ==  mark) {
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public boolean isWithinCanvas(int x, int y) {
+
+        if(x<1|| x>getWidth()-2){
+           return false;
+        }else if(y<1|| y>getHeight()-2){
+            return false;
+        }
+        return true;
+    }
 }
 
