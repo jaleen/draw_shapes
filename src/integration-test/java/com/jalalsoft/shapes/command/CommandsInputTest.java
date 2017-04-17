@@ -26,6 +26,7 @@ public class CommandsInputTest {
     private String canvasCommandName = "c";
     private String quitCommandName = "q";
     private String lineCommandName = "L";
+    private String recCommandName = "R";
     private static final String nl = System.lineSeparator();
     @Mock
     private CommandFactory commandFactory;
@@ -34,6 +35,8 @@ public class CommandsInputTest {
     private Command canvasCommand;
     @Mock
     private Command lineCommand;
+    @Mock
+    private Command recCommand;
     @Mock
     private Command quitCommand;
 
@@ -233,10 +236,10 @@ public class CommandsInputTest {
                 outputStream.toString());
     }
     @Test
-    public void whenDrawLineCommand_thenCanvasCommandIssued() throws IOException {
+    public void whenDrawLineCommand_thenLineCommandIssued() throws IOException {
 
         //given
-        String userCommand = "L 20 4" + nl + quitCommandName + nl;
+        String userCommand = "L 10 4 10 7" + nl + quitCommandName + nl;
         InputStream in = new ByteArrayInputStream(userCommand.getBytes());
 
         CommandInputStream commandInputStream = new CommandInputStream(in);
@@ -251,6 +254,28 @@ public class CommandsInputTest {
 
         //then
         String expected = lineCommandName + nl + quitCommandName + nl;
+        assertEquals("Command isn't executed successfully.", expected, outputStream.toString());
+
+    }
+    @Test
+    public void whenDrawRectangleCommand_thenRectangleCommandIssued() throws IOException {
+
+        //given
+        String userCommand = "R 10 4 15 8" + nl + quitCommandName + nl;
+        InputStream in = new ByteArrayInputStream(userCommand.getBytes());
+
+        CommandInputStream commandInputStream = new CommandInputStream(in);
+        CommandOutputStream commandOutputStream = new CommandOutputStream(out);
+
+        when(commandFactory.getCommand(recCommandName)).thenReturn(recCommand);
+        when(commandFactory.getCommand(quitCommandName)).thenReturn(quitCommand);
+        when(recCommand.execute(any())).thenReturn(recCommandName);
+        when(quitCommand.execute(any())).thenReturn(quitCommandName);
+        //when
+        replService.takeCommands(commandInputStream, commandOutputStream);
+
+        //then
+        String expected = recCommandName + nl + quitCommandName + nl;
         assertEquals("Command isn't executed successfully.", expected, outputStream.toString());
 
     }
