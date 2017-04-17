@@ -22,7 +22,7 @@ public class CanvasCommand extends Command {
     @Override
     public String execute(String arguments) {
         if (arguments == null) {
-            throw new IllegalArgumentException("Incorrect currentCanvas arguments. It should be in format 'c width height' e.g. c 5 7");
+            throw new IllegalArgumentException("Incorrect Canvas arguments. It should be in format 'c width height' e.g. c 5 7");
         }
         Scanner scanner = new Scanner(arguments);
 
@@ -33,7 +33,7 @@ public class CanvasCommand extends Command {
             width = scanner.nextInt();
             height = scanner.nextInt();
         } catch (NoSuchElementException noSuchElementException) {
-            throw new IllegalArgumentException("Incorrect currentCanvas arguments. It should be in format 'c width height' e.g. c 5 7");
+            throw new IllegalArgumentException("Incorrect Canvas arguments. It should be in format 'c width height' e.g. c 5 7");
         }
 
         currentCanvas = new Canvas(width, height);
