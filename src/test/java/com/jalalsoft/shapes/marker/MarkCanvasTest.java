@@ -3,9 +3,7 @@ package com.jalalsoft.shapes.marker;
 import com.jalalsoft.shapes.model.Canvas;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 
 /**
@@ -141,6 +139,12 @@ public class MarkCanvasTest {
 
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void whenCanvasNotInitialised_thenThrowIllegalArgumentException(){
 
+        Canvas.clean();
+        Canvas.getCurrentCanvas();
+
+    }
 
 }

@@ -19,6 +19,7 @@ public class Canvas {
 
         //added two (+2) more spaces for boundary lines.
         canvas = new char[height + 2][width + 2];
+        clean();
         currentCanvas = this;
     }
 
@@ -54,6 +55,9 @@ public class Canvas {
     }
     public static Canvas getCurrentCanvas(){
 
+        if(currentCanvas==null){
+            throw new IllegalArgumentException("Create a canvas first using command c width height e.g. c 5 6");
+        }
         return currentCanvas;
     }
 
@@ -75,6 +79,9 @@ public class Canvas {
             return false;
         }
         return true;
+    }
+    public static void clean(){
+        currentCanvas = null;
     }
 }
 
