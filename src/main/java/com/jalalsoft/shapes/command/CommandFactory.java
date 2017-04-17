@@ -3,6 +3,7 @@ package com.jalalsoft.shapes.command;
 import com.jalalsoft.shapes.config.Configuration;
 import com.jalalsoft.shapes.marker.CanvasMarker;
 import com.jalalsoft.shapes.marker.LineMarker;
+import com.jalalsoft.shapes.validator.LineValidator;
 
 import java.util.HashMap;
 
@@ -29,7 +30,7 @@ public class CommandFactory {
 
     private static Command createLineCommand(Configuration configuration) {
         String lineChar = configuration.getPropertyValue("lineCharacter");
-        LineMarker lineMarker= new  LineMarker(lineChar.charAt(0));
+        LineMarker lineMarker= new  LineMarker(new LineValidator(), lineChar.charAt(0));
         return new LineCommand(lineMarker);
 
     }

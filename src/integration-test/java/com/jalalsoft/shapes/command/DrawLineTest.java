@@ -4,6 +4,7 @@ import com.jalalsoft.shapes.marker.CanvasMarker;
 import com.jalalsoft.shapes.marker.LineMarker;
 import com.jalalsoft.shapes.model.Canvas;
 import com.jalalsoft.shapes.model.Line;
+import com.jalalsoft.shapes.validator.LineValidator;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,10 +18,12 @@ public class DrawLineTest {
 
     private LineMarker lineMarker;
     private LineCommand lineCommand;
+    private LineValidator lineValidator;
 
     @Before
     public void setup(){
-        lineMarker = new LineMarker('x');
+        lineValidator = new LineValidator();
+        lineMarker = new LineMarker(lineValidator, 'x');
         lineCommand = new LineCommand(lineMarker);
     }
 

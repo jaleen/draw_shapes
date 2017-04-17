@@ -13,6 +13,7 @@ public class CanvasMarker extends LineMarker {
 
     public CanvasMarker(char horizontalChar, char verticalChar) {
 
+        super(null);
         this.horizontalChar = horizontalChar;
         this.verticalChar = verticalChar;
     }
