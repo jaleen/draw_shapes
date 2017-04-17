@@ -3,6 +3,7 @@ package com.jalalsoft.shapes.command;
 import static org.mockito.Mockito.*;
 
 import com.jalalsoft.shapes.config.Configuration;
+import com.jalalsoft.shapes.model.Line;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -40,7 +41,23 @@ public class CommandCreationTest {
 
         String cmd = "C";
         Command command = commandFactory.getCommand(cmd);
-        assertThat("Create canvas command not initialised yet.", command, instanceOf(CanvasCommand.class));
+        assertThat("Create currentCanvas command not initialised yet.", command, instanceOf(CanvasCommand.class));
     }
+    @Test
+    public void givenCreateLineRequest_thenLineCommandCreated() {
 
+        String cmd = "L";
+        Command mockCreateLineCommand = mock(LineCommand.class);
+        when(mockCreateLineCommand.getName()).thenReturn(cmd);
+        commandFactory.addCommand(mockCreateLineCommand);
+        Command command = commandFactory.getCommand(cmd);
+        assertThat(command, instanceOf(LineCommand.class));
+    }
+    @Test
+    public void whenGetLineCommandRequest_thenLineCommandAlreadyInitialised() {
+
+        String cmd = "L";
+        Command command = commandFactory.getCommand(cmd);
+        assertThat("Create Line command not initialised yet.", command, instanceOf(LineCommand.class));
+    }
 }

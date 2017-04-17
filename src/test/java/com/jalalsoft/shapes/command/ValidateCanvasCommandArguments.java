@@ -31,8 +31,8 @@ public class ValidateCanvasCommandArguments {
         verify(canvasMarker).markBoundary(canvasArgumentCaptor.capture());
         int expectedHeight = 6;
         int expectedWidth = 5;
-        assertEquals("Height of canvas is incorrectly captured.", expectedHeight, canvasArgumentCaptor.getValue().getHeight()-2);
-        assertEquals("Width of canvas is incorrectly captured.", expectedWidth, canvasArgumentCaptor.getValue().getWidth()-2);
+        assertEquals("Height of currentCanvas is incorrectly captured.", expectedHeight, canvasArgumentCaptor.getValue().getHeight()-2);
+        assertEquals("Width of currentCanvas is incorrectly captured.", expectedWidth, canvasArgumentCaptor.getValue().getWidth()-2);
 
     }
     @Test
@@ -45,8 +45,8 @@ public class ValidateCanvasCommandArguments {
         verify(canvasMarker).markBoundary(canvasArgumentCaptor.capture());
         int expectedHeight = 6;
         int expectedWidth = 5;
-        assertEquals("Height of canvas is incorrectly captured.", expectedHeight, canvasArgumentCaptor.getValue().getHeight()-2);
-        assertEquals("Width of canvas is incorrectly captured.", expectedWidth, canvasArgumentCaptor.getValue().getWidth()-2);
+        assertEquals("Height of currentCanvas is incorrectly captured.", expectedHeight, canvasArgumentCaptor.getValue().getHeight()-2);
+        assertEquals("Width of currentCanvas is incorrectly captured.", expectedWidth, canvasArgumentCaptor.getValue().getWidth()-2);
 
     }
 

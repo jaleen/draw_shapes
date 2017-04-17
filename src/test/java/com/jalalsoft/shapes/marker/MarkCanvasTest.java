@@ -1,9 +1,11 @@
-package com.jalalsoft.shapes.canvas;
+package com.jalalsoft.shapes.marker;
 
-import com.jalalsoft.shapes.marker.CanvasMarker;
 import com.jalalsoft.shapes.model.Canvas;
-
+import com.jalalsoft.shapes.validator.LineValidator;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.junit.Assert.assertEquals;
 
@@ -36,7 +38,7 @@ public class MarkCanvasTest {
         int width = 7;
         int height = 5;
         Canvas canvas = new Canvas(width, height);
-        new CanvasMarker( '-', '|').markBoundary(canvas);
+        new CanvasMarker('-', '|').markBoundary(canvas);
 
         assertEquals("Canvas boundary isn't marked correctly",
                 "---------\n" +

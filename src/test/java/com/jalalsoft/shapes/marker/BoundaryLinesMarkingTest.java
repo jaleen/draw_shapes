@@ -1,16 +1,23 @@
-package com.jalalsoft.shapes.canvas;
+package com.jalalsoft.shapes.marker;
 
 import com.jalalsoft.shapes.marker.LineMarker;
 import com.jalalsoft.shapes.model.Canvas;
 import com.jalalsoft.shapes.model.Line;
+import com.jalalsoft.shapes.validator.LineValidator;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.junit.Assert.assertEquals;
 
 /**
  * Created by jalal.deen on 12/04/2017.
  */
+@RunWith(MockitoJUnitRunner.class)
 public class BoundaryLinesMarkingTest {
+    @Mock
+    private LineValidator lineValidator;
     @Test
     public void whenXCoordinatesAreSame_thenDrawVerticalLine() {
 
@@ -22,7 +29,7 @@ public class BoundaryLinesMarkingTest {
         int height = 6;
         Canvas canvas = null;
         canvas = new Canvas(width, height);
-        LineMarker printer = new LineMarker();
+        LineMarker printer = new LineMarker(lineValidator);
 
         printer.mark(line, canvas, lineChar);
 
@@ -50,7 +57,7 @@ public class BoundaryLinesMarkingTest {
         int height = 1;
         Canvas canvas = null;
         canvas = new Canvas(width, height);
-        LineMarker printer = new LineMarker();
+        LineMarker printer = new LineMarker(lineValidator);
 
         printer.mark(line, canvas, lineChar);
 
