@@ -232,5 +232,26 @@ public class CommandsInputTest {
                 expectedOutput,
                 outputStream.toString());
     }
+    @Test
+    public void whenDrawLineCommand_thenCanvasCommandIssued() throws IOException {
 
+        //given
+        String userCommand = "L 20 4" + nl + quitCommandName + nl;
+        InputStream in = new ByteArrayInputStream(userCommand.getBytes());
+
+        CommandInputStream commandInputStream = new CommandInputStream(in);
+        CommandOutputStream commandOutputStream = new CommandOutputStream(out);
+
+        when(commandFactory.getCommand(lineCommandName)).thenReturn(lineCommand);
+        when(commandFactory.getCommand(quitCommandName)).thenReturn(quitCommand);
+        when(lineCommand.execute(any())).thenReturn(lineCommandName);
+        when(quitCommand.execute(any())).thenReturn(quitCommandName);
+        //when
+        replService.takeCommands(commandInputStream, commandOutputStream);
+
+        //then
+        String expected = lineCommandName + nl + quitCommandName + nl;
+        assertEquals("Command isn't executed successfully.", expected, outputStream.toString());
+
+    }
 }
