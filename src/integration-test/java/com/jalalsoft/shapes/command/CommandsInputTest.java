@@ -96,7 +96,7 @@ public class CommandsInputTest {
     }
 
     @Test
-    public void givenCommandInput_whenCommandIsCreateCanvas_thePrintCanvas() throws IOException {
+    public void givenCommandInput_whenCommandIsCreateCanvas_thenPrintCanvas() throws IOException {
         String commands = "c 20 4" + nl + "q" + nl + "";
 
         String canvasOutput = "-------" + nl + "" +
@@ -121,10 +121,10 @@ public class CommandsInputTest {
         when(quitCommand.execute(any())).thenReturn(quitCommandName);
 
         replService.takeCommands(commandInputStream, commandOutputStream);
-        String expectedOutput = canvasOutput+ nl + "q" + nl;
+        String expectedOutput = canvasOutput + nl + "q" + nl;
 
         assertEquals("Canvas boundary isn't marked correctly",
-                canvasOutput ,
+                expectedOutput,
                 outputStream.toString());
     }
 
@@ -155,7 +155,7 @@ public class CommandsInputTest {
 
         replService.takeCommands(commandInputStream, commandOutputStream);
 
-        String expectedCanvasOutput = "Invalid command." + nl + canvasOutput+ nl + "q" + nl;
+        String expectedCanvasOutput = "Invalid command." + nl + canvasOutput + nl + "q" + nl;
 
         assertEquals("Canvas boundary isn't marked correctly",
                 expectedCanvasOutput,
@@ -167,8 +167,8 @@ public class CommandsInputTest {
 
         String badArgument = " badArgument 4";
         String goodCanvasArguments = " 20 4";
-        String goodCanvasCommand = "c"+goodCanvasArguments;
-        String commands = "c"+badArgument +nl+goodCanvasCommand+nl + "q" + nl;
+        String goodCanvasCommand = "c" + goodCanvasArguments;
+        String commands = "c" + badArgument + nl + goodCanvasCommand + nl + "q" + nl;
 
         String canvasOutput =
                 "-------" + nl +
@@ -194,10 +194,42 @@ public class CommandsInputTest {
 
         replService.takeCommands(commandInputStream, commandOutputStream);
 
-        String expectedCanvasOutput = "Invalid command." + nl + canvasOutput+ nl + "q" + nl;
+        String expectedCanvasOutput = "Invalid command." + nl + canvasOutput + nl + "q" + nl;
 
         assertEquals("Canvas boundary isn't marked correctly",
-                expectedCanvasOutput ,
+                expectedCanvasOutput,
+                outputStream.toString());
+    }
+
+    @Test
+    public void givenNoCommandInput_whenUserInputsEnterButton_thenGracefullyWaitForNextCommand() throws IOException {
+        String commands = nl + "c 20 4" + nl + "q" + nl + "";
+
+        String canvasOutput = "-------" + nl + "" +
+                "|     |" + nl + "" +
+                "|     |" + nl + "" +
+                "|     |" + nl + "" +
+                "|     |" + nl + "" +
+                "|     |" + nl + "" +
+                "-------";
+
+        InputStream in = new ByteArrayInputStream(commands.getBytes());
+
+        CommandInputStream commandInputStream = new CommandInputStream(in);
+        CommandOutputStream commandOutputStream = new CommandOutputStream(out);
+
+
+        when(commandFactory.getCommand(canvasCommandName)).thenReturn(canvasCommand);
+        when(commandFactory.getCommand(quitCommandName)).thenReturn(quitCommand);
+
+        when(canvasCommand.execute(any())).thenReturn(canvasOutput);
+        when(quitCommand.execute(any())).thenReturn(quitCommandName);
+
+        replService.takeCommands(commandInputStream, commandOutputStream);
+        String expectedOutput = "Invalid command." + nl + canvasOutput + nl + "q" + nl;
+
+        assertEquals("Canvas boundary isn't marked correctly",
+                expectedOutput,
                 outputStream.toString());
     }
 

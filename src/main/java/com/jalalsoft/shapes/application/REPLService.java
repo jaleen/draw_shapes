@@ -32,7 +32,7 @@ public class REPLService {
             if (command == null) continue;
 
             String output = evaluate(command);
-            if(output==null){
+            if (output == null) {
                 commandOutputStream.getOutStream().println("Invalid command.");
                 continue;
             }
@@ -43,18 +43,22 @@ public class REPLService {
 
     private String evaluate(String userCommand) {
         String output;
-        Scanner scanner = new Scanner(userCommand);
-        Command cmd = commandFactory.getCommand(scanner.next());
-        if(cmd==null){
-            return null;
-        }
-        String arguments = null;
-        if (scanner.hasNext())
-            arguments = scanner.nextLine();
         try {
+            Scanner scanner = new Scanner(userCommand);
+            Command cmd = null;
+            if(scanner.hasNext()) {
+                cmd = commandFactory.getCommand(scanner.next());
+            }
+            if (cmd == null) {
+                return null;
+            }
+            String arguments = null;
+            if (scanner.hasNext())
+                arguments = scanner.nextLine();
+
             output = cmd.execute(arguments);
-        }catch (IllegalArgumentException exception){
-            output=exception.getMessage();
+        } catch (IllegalArgumentException exception) {
+            output = exception.getMessage();
         }
         return output;
     }
