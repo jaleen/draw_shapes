@@ -4,6 +4,7 @@ import com.jalalsoft.shapes.model.Canvas;
 import com.jalalsoft.shapes.model.Line;
 import com.jalalsoft.shapes.model.Rectangle;
 import com.jalalsoft.shapes.validator.LineValidator;
+import com.jalalsoft.shapes.validator.RectangleValidator;
 
 /**
  * Created by jalal.deen on 17/04/2017.
@@ -11,8 +12,8 @@ import com.jalalsoft.shapes.validator.LineValidator;
 public class RectangleMarker extends LineMarker{
     private final char lineChar;
 
-    public RectangleMarker(LineValidator lineValidator, char lineChar) {
-        super(lineValidator, lineChar);
+    public RectangleMarker(RectangleValidator recValidator, char lineChar) {
+        super(recValidator, lineChar);
         this.lineChar = lineChar;
     }
     public void mark(Rectangle rectangle, Canvas canvas) {

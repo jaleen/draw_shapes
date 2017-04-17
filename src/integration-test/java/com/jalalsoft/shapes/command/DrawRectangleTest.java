@@ -3,6 +3,7 @@ package com.jalalsoft.shapes.command;
 import com.jalalsoft.shapes.marker.RectangleMarker;
 import com.jalalsoft.shapes.model.Canvas;
 import com.jalalsoft.shapes.validator.LineValidator;
+import com.jalalsoft.shapes.validator.RectangleValidator;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -19,7 +20,7 @@ public class DrawRectangleTest {
         int width = 8;
         int height = 8;
         Canvas canvas = new Canvas(width, height);
-        RectangleCommand rectangleCommand = new RectangleCommand(new RectangleMarker(new LineValidator(), 'x'));
+        RectangleCommand rectangleCommand = new RectangleCommand(new RectangleMarker(new RectangleValidator(), 'x'));
 
         rectangleCommand.execute(arguments);
 
