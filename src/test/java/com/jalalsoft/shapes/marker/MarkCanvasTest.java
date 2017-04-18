@@ -14,7 +14,7 @@ public class MarkCanvasTest {
     public void whenWidthAndHeightIsSame_thenDrawCanvas() {
         int width = 5;
         int height = 5;
-        Canvas canvas = new Canvas(width, height);
+        Canvas canvas = Canvas.getInstance(width, height);
         new CanvasMarker('-', '|').markBoundary(canvas);
 
         assertEquals("Canvas boundary isn't marked correctly",
@@ -33,7 +33,7 @@ public class MarkCanvasTest {
 
         int width = 7;
         int height = 5;
-        Canvas canvas = new Canvas(width, height);
+        Canvas canvas = Canvas.getInstance(width, height);
         new CanvasMarker('-', '|').markBoundary(canvas);
 
         assertEquals("Canvas boundary isn't marked correctly",
@@ -51,7 +51,7 @@ public class MarkCanvasTest {
 
         int width = 7;
         int height = 8;
-        Canvas canvas = new Canvas(width, height);
+        Canvas canvas = Canvas.getInstance(width, height);
         new CanvasMarker( '-', '|').markBoundary(canvas);
 
         assertEquals("Canvas boundary isn't marked correctly",
@@ -74,7 +74,7 @@ public class MarkCanvasTest {
         int width = 0;
         int height = 8;
 
-        new Canvas(width, height);
+        Canvas.getInstance(width, height);
 
     }
 
@@ -84,7 +84,7 @@ public class MarkCanvasTest {
         int width = 1;
         int height = 0;
 
-        new Canvas(width, height);
+        Canvas.getInstance(width, height);
 
     }
 
@@ -94,7 +94,7 @@ public class MarkCanvasTest {
         int width = 3;
         int height = 3;
 
-        Canvas canvas = new Canvas(width, height);
+        Canvas canvas = Canvas.getInstance(width, height);
         canvas.mark(1,1,'x');
 
         assertTrue("Canvas should have been marked.", canvas.isMarked(1,1));
@@ -107,7 +107,7 @@ public class MarkCanvasTest {
         int width = 3;
         int height = 3;
 
-        Canvas canvas = new Canvas(width, height);
+        Canvas canvas = Canvas.getInstance(width, height);
         canvas.mark(1,1,'x');
 
         assertFalse("Canvas should'nt be marked.", canvas.isMarked(1,2));
@@ -119,7 +119,7 @@ public class MarkCanvasTest {
         int width = 3;
         int height = 3;
 
-        Canvas canvas = new Canvas(width, height);
+        Canvas canvas = Canvas.getInstance(width, height);
 
 
         assertTrue("Canvas should'nt be marked.", canvas.isWithinCanvas(1,2));
@@ -132,7 +132,7 @@ public class MarkCanvasTest {
         int width = 3;
         int height = 3;
 
-        Canvas canvas = new Canvas(width, height);
+        Canvas canvas = Canvas.getInstance(width, height);
 
 
         assertFalse("Canvas should'nt be marked.", canvas.isWithinCanvas(-1,2));

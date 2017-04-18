@@ -5,10 +5,10 @@ package com.jalalsoft.shapes.model;
  */
 public class Canvas {
 
-    private char[][] canvas;
+    private char[][] canvasMap;
     private static Canvas currentCanvas;
 
-    public Canvas(int width, int height) {
+    private Canvas(int width, int height) {
         if (width < 1) {
             throw new IllegalArgumentException("Invalid canvas width:" + width + " It should always be more than 1.");
         }
@@ -18,44 +18,53 @@ public class Canvas {
         }
 
         //added two (+2) more spaces for boundary lines.
-        canvas = new char[height + 2][width + 2];
-        clean();
-        currentCanvas = this;
+        canvasMap = new char[height + 2][width + 2];
+
+
+    }
+
+    public static Canvas getInstance(int width, int height) {
+
+        Canvas canvas = new Canvas(width, height);
+        currentCanvas = canvas;
+        return canvas;
     }
 
     public void mark(int x, int y, char lineChar) {
 
-        canvas[y][x] = lineChar;
+        canvasMap[y][x] = lineChar;
     }
 
     @Override
     public String toString() {
 
-        String lines = "";
-        for (char[] line : canvas) {
+        StringBuilder lines = new StringBuilder("");
+        for (char[] line : canvasMap) {
             for (char pixel : line) {
                 if (Character.MIN_VALUE == pixel) {
-                    lines += ' ';
+                    lines.append(' ');
                 } else {
 
-                    lines += pixel;
+                    lines.append(pixel);
                 }
 
             }
-            lines += '\n';
+            lines.append(System.lineSeparator());
         }
-        return lines;
+        return lines.toString();
     }
+
     public int getWidth() {
-        return canvas[0].length;
+        return canvasMap[0].length;
     }
 
     public int getHeight() {
-        return canvas.length;
+        return canvasMap.length;
     }
-    public static Canvas getCurrentCanvas(){
 
-        if(currentCanvas==null){
+    public static Canvas getCurrentCanvas() {
+
+        if (currentCanvas == null) {
             throw new IllegalArgumentException("Create a canvas first using command c width height e.g. c 5 6");
         }
         return currentCanvas;
@@ -63,24 +72,25 @@ public class Canvas {
 
     public boolean isMarked(int x, int y) {
 
-        char mark = canvas[y][x];
-        if(Character.MIN_VALUE ==  mark) {
+        char mark = canvasMap[y][x];
+        if (Character.MIN_VALUE == mark) {
             return false;
-        }else{
-            return true;
         }
+        return true;
+
     }
 
     public boolean isWithinCanvas(int x, int y) {
 
-        if(x<1|| x>getWidth()-2){
-           return false;
-        }else if(y<1|| y>getHeight()-2){
+        if (x < 1 || x > getWidth() - 2) {
+            return false;
+        } else if (y < 1 || y > getHeight() - 2) {
             return false;
         }
         return true;
     }
-    public static void clean(){
+
+    public static void clean() {
         currentCanvas = null;
     }
 }

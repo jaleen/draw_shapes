@@ -30,7 +30,7 @@ public class ColourFillCommandTest {
         ArgumentCaptor<Character> colourAargument = ArgumentCaptor.forClass(Character.class);
         ArgumentCaptor<Canvas> canvasArgumentCaptor = ArgumentCaptor.forClass(Canvas.class);
         String arguments = "5 6 o";
-        Canvas canvas = new Canvas(10,10);
+        Canvas canvas = Canvas.getInstance(10,10);
         colourFillCommand.execute(arguments);
         verify(colourFillMarker).fill(xAargument.capture(),yAargument.capture(),colourAargument.capture(),canvasArgumentCaptor.capture());
         int expectedX = 5;

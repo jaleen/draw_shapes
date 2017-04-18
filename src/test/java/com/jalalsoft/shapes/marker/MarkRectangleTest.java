@@ -2,7 +2,6 @@ package com.jalalsoft.shapes.marker;
 
 import com.jalalsoft.shapes.model.Canvas;
 import com.jalalsoft.shapes.model.Rectangle;
-import com.jalalsoft.shapes.validator.LineValidator;
 import com.jalalsoft.shapes.validator.RectangleValidator;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -20,7 +19,7 @@ public class MarkRectangleTest {
     @Test
     public void givenCoordinates_thenMarkRectangle() {
         Rectangle rectangle = new Rectangle(2, 2, 5, 5);
-        Canvas canvas = new Canvas(8, 8);
+        Canvas canvas = Canvas.getInstance(8, 8);
         new RectangleMarker(rectangleValidator, 'x').mark(rectangle, canvas);
 
         assertEquals("Rectangle isn't marked correctly",

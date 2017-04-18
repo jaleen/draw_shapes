@@ -26,7 +26,7 @@ public class LineValidatorTest {
         int width = 6;
         int height = 5;
         Canvas canvas = null;
-        canvas = new Canvas(width, height);
+        canvas = Canvas.getInstance(width, height);
 
         boolean valid = lineValidator.validate(line, canvas);
 
@@ -41,7 +41,7 @@ public class LineValidatorTest {
         int width = 5;
         int height = 5;
         Canvas canvas = null;
-        canvas = new Canvas(width, height);
+        canvas = Canvas.getInstance(width, height);
 
         lineValidator.validate(line, canvas);
     }
@@ -55,7 +55,7 @@ public class LineValidatorTest {
         int width = 5;
         int height = 5;
         Canvas canvas = null;
-        canvas = new Canvas(width, height);
+        canvas = Canvas.getInstance(width, height);
 
         lineValidator.validate(line, canvas);
     }
@@ -68,7 +68,7 @@ public class LineValidatorTest {
         int width = 5;
         int height = 5;
         Canvas canvas = null;
-        canvas = new Canvas(width, height);
+        canvas = Canvas.getInstance(width, height);
 
         lineValidator.validate(line, canvas);
     }
@@ -82,7 +82,7 @@ public class LineValidatorTest {
         int width = 5;
         int height = 5;
         Canvas canvas = null;
-        canvas = new Canvas(width, height);
+        canvas = Canvas.getInstance(width, height);
 
         lineValidator.validate(line, canvas);
     }
@@ -94,7 +94,7 @@ public class LineValidatorTest {
         int width = 5;
         int height = 5;
         Canvas canvas = null;
-        canvas = new Canvas(width, height);
+        canvas = Canvas.getInstance(width, height);
 
         lineValidator.validate(line, canvas);
     }
@@ -108,7 +108,7 @@ public class LineValidatorTest {
         int width = 5;
         int height = 5;
         Canvas canvas = null;
-        canvas = new Canvas(width, height);
+        canvas = Canvas.getInstance(width, height);
 
         lineValidator.validate(line, canvas);
     }
@@ -121,7 +121,7 @@ public class LineValidatorTest {
         int width = 5;
         int height = 5;
         Canvas canvas = null;
-        canvas = new Canvas(width, height);
+        canvas = Canvas.getInstance(width, height);
 
         lineValidator.validate(line, canvas);
     }
@@ -135,7 +135,7 @@ public class LineValidatorTest {
         int width = 5;
         int height = 5;
         Canvas canvas = null;
-        canvas = new Canvas(width, height);
+        canvas = Canvas.getInstance(width, height);
 
         lineValidator.validate(line, canvas);
     }

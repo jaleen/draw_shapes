@@ -12,6 +12,8 @@ import java.io.IOException;
  */
 public class App {
 
+    private App(){}
+
     public static void main(String[] args) throws IOException {
 
         Configuration configuration = Configuration.init("shapes.properties");

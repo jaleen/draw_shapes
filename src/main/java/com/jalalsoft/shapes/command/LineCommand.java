@@ -23,12 +23,10 @@ public class LineCommand extends Command {
     @Override
     public String execute(String commandArguments) {
 
-        if(commandArguments==null){
+        if (commandArguments == null) {
             throw new IllegalArgumentException("Invalid line command. Use format L x1 y1 x2 y2 e.g. L 10 12 10 16");
         }
-        try {
-            Scanner scanner = new Scanner(commandArguments);
-
+        try (Scanner scanner = new Scanner(commandArguments)) {
 
             int x1 = scanner.nextInt();
             int y1 = scanner.nextInt();
@@ -38,8 +36,8 @@ public class LineCommand extends Command {
             Line line = new Line(x1, y1, x2, y2);
 
             lineMarker.mark(line, Canvas.getCurrentCanvas());
-        }catch (NoSuchElementException nse){
-            throw new IllegalArgumentException("Invalid line command. Use format L x1 y1 x2 y2 e.g. L 10 12 10 16");
+        } catch (NoSuchElementException nse) {
+            throw new IllegalArgumentException("Invalid line command. Use format L x1 y1 x2 y2 e.g. L 10 12 10 16", nse);
         }
         return Canvas.getCurrentCanvas().toString();
     }

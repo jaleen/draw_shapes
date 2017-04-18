@@ -1,9 +1,6 @@
 package com.jalalsoft.shapes.command;
 
-import static org.mockito.Mockito.*;
-
 import com.jalalsoft.shapes.config.Configuration;
-import com.jalalsoft.shapes.model.Line;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,6 +8,8 @@ import java.io.IOException;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by jalal.deen on 11/04/2017.

@@ -1,19 +1,13 @@
 package com.jalalsoft.shapes.command;
 
-import com.jalalsoft.shapes.marker.CanvasMarker;
 import com.jalalsoft.shapes.marker.LineMarker;
 import com.jalalsoft.shapes.model.Canvas;
-import com.jalalsoft.shapes.model.Line;
 import com.jalalsoft.shapes.validator.LineValidator;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static junit.framework.TestCase.assertEquals;
 
-/**
- * Created by jalal.deen on 17/04/2017.
- */
 public class DrawLineTest {
 
     private LineMarker lineMarker;
@@ -33,7 +27,7 @@ public class DrawLineTest {
         int width = 5;
         int height = 1;
         Canvas canvas = null;
-        canvas = new Canvas(width, height);
+        canvas = Canvas.getInstance(width, height);
 
         lineCommand.execute("1 1 4 1");
         Assert.assertEquals("Line isn't printed correctly",

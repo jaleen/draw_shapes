@@ -1,6 +1,5 @@
 package com.jalalsoft.shapes.marker;
 
-import com.jalalsoft.shapes.marker.LineMarker;
 import com.jalalsoft.shapes.model.Canvas;
 import com.jalalsoft.shapes.model.Line;
 import com.jalalsoft.shapes.validator.LineValidator;
@@ -31,7 +30,7 @@ public class MarkLineTest {
         int width = 5;
         int height = 1;
         Canvas canvas = null;
-        canvas = new Canvas(width, height);
+        canvas = Canvas.getInstance(width, height);
         LineMarker marker = new LineMarker(lineValidator);
 
 
@@ -53,7 +52,7 @@ public class MarkLineTest {
         int width = 5;
         int height = 5;
         Canvas canvas = null;
-        canvas = new Canvas(width, height);
+        canvas = Canvas.getInstance(width, height);
         LineMarker marker = new LineMarker(lineValidator);
         when(lineValidator.validate(any(Line.class), any(Canvas.class))).thenThrow(IllegalArgumentException.class);
 

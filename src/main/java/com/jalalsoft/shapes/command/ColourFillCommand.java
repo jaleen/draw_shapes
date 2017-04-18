@@ -29,13 +29,13 @@ public class ColourFillCommand extends Command {
         int x;
         int y;
         char colour;
-        try {
-            Scanner scanner = new Scanner(arguments);
+        try(Scanner scanner = new Scanner(arguments)) {
+
             x = scanner.nextInt();
             y = scanner.nextInt();
             colour = scanner.next(".").charAt(0);
         } catch (NoSuchElementException noSuchElementException) {
-            throw new IllegalArgumentException("Incorrect fill colour arguments. It should be in format 'b x y colour' e.g. b 5 7 o");
+            throw new IllegalArgumentException("Incorrect fill colour arguments. It should be in format 'b x y colour' e.g. b 5 7 o", noSuchElementException);
         }
         Canvas canvas = Canvas.getCurrentCanvas();
         marker.fill(x, y, colour, canvas);

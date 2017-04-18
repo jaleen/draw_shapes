@@ -23,7 +23,7 @@ public class MarkColourFillTest {
         int width = 4;
         int height = 4;
 
-        Canvas canvas = new Canvas(width, height);
+        Canvas canvas = Canvas.getInstance(width, height);
 
         ColourFillMarker marker = new ColourFillMarker();
         marker.fill(x, y, colour, canvas);
@@ -48,7 +48,7 @@ public class MarkColourFillTest {
         int width = 6;
         int height = 6;
 
-        Canvas canvas = new Canvas(width, height);
+        Canvas canvas = Canvas.getInstance(width, height);
         canvas.mark(3, 1, 'x');
         canvas.mark(3, 2, 'x');
         canvas.mark(3, 3, 'x');
@@ -81,7 +81,7 @@ public class MarkColourFillTest {
         int width = 6;
         int height = 6;
 
-        Canvas canvas = new Canvas(width, height);
+        Canvas canvas = Canvas.getInstance(width, height);
         canvas.mark(3, 1, 'x');
         canvas.mark(3, 2, 'x');
         canvas.mark(3, 3, 'x');

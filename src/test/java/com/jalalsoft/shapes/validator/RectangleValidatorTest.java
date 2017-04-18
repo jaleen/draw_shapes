@@ -14,7 +14,7 @@ public class RectangleValidatorTest {
 
         RectangleValidator rectangleValidator = new RectangleValidator();
         Rectangle rectangle = new Rectangle(2,2,6,6);
-        Canvas canvas = new Canvas(7,7);
+        Canvas canvas = Canvas.getInstance(7,7);
         boolean valid = rectangleValidator.validate(rectangle,canvas);
 
     }
@@ -23,7 +23,7 @@ public class RectangleValidatorTest {
 
         RectangleValidator rectangleValidator = new RectangleValidator();
         Rectangle rectangle = new Rectangle(-1,2,6,6);
-        Canvas canvas = new Canvas(7,7);
+        Canvas canvas = Canvas.getInstance(7,7);
         rectangleValidator.validate(rectangle,canvas);
 
     }
