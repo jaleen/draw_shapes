@@ -26,4 +26,4 @@ Clutter in canvas class need sorting out. model and it's instantiation needs sep
 REPL is tested through integration tests. REPL is also developed using TDD through integration tests. It isn't great idea for prod code and for a production code I would do proper unit tests for it as well.
 ### Why some git commits have more changes committed than they should?
 Usually i would commit code on every green test. However in some cases where a BDD approach driven integration test required more than one unit tests to be in place before integration test can be green.
-At other times I must admit, i clearly let the guard down on this as I was quite distracted and disrupted while working on it over holiday period with loads of kids interacting and playing with me. sorry ;)
+Also when merging a feature branch to development branch might have a larger commit as well. At other times I must admit, i clearly let the guard down on this as I was quite distracted and disrupted while working on it over holiday period with loads of kids interacting and playing with me. sorry ;)
