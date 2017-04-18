@@ -1,6 +1,5 @@
 package com.jalalsoft.shapes.marker;
 
-import com.jalalsoft.shapes.marker.LineMarker;
 import com.jalalsoft.shapes.model.Canvas;
 import com.jalalsoft.shapes.model.Line;
 import com.jalalsoft.shapes.validator.LineValidator;
@@ -28,7 +27,7 @@ public class BoundaryLinesMarkingTest {
         int width = 5;
         int height = 6;
         Canvas canvas = null;
-        canvas = new Canvas(width, height);
+        canvas = Canvas.getInstance(width, height);
         LineMarker printer = new LineMarker(lineValidator);
 
         printer.mark(line, canvas, lineChar);
@@ -56,7 +55,7 @@ public class BoundaryLinesMarkingTest {
         int width = 5;
         int height = 1;
         Canvas canvas = null;
-        canvas = new Canvas(width, height);
+        canvas = Canvas.getInstance(width, height);
         LineMarker printer = new LineMarker(lineValidator);
 
         printer.mark(line, canvas, lineChar);

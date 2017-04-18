@@ -15,7 +15,7 @@ public class CommandFactory {
     private HashMap<String, Command> commands = null;
 
     private CommandFactory() {
-        commands = new HashMap<String, Command>();
+        commands = new HashMap<>();
     }
 
     /* Factory pattern */

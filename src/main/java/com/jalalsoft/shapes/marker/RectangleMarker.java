@@ -3,12 +3,9 @@ package com.jalalsoft.shapes.marker;
 import com.jalalsoft.shapes.model.Canvas;
 import com.jalalsoft.shapes.model.Line;
 import com.jalalsoft.shapes.model.Rectangle;
-import com.jalalsoft.shapes.validator.LineValidator;
 import com.jalalsoft.shapes.validator.RectangleValidator;
 
-/**
- * Created by jalal.deen on 17/04/2017.
- */
+
 public class RectangleMarker extends LineMarker{
     private final char lineChar;
 

@@ -25,9 +25,7 @@ public class RectangleCommand extends Command {
         if (arguments == null) {
             throw new IllegalArgumentException("Invalid rectangle command. Use format R x1 y1 x2 y2 e.g. L 10 12 10 16");
         }
-        try {
-            Scanner scanner = new Scanner(arguments);
-
+        try (  Scanner scanner = new Scanner(arguments)){
             int x1 = scanner.nextInt();
             int y1 = scanner.nextInt();
             int x2 = scanner.nextInt();
@@ -37,7 +35,7 @@ public class RectangleCommand extends Command {
 
             rectangleMarker.mark(rectangle, Canvas.getCurrentCanvas());
         } catch (NoSuchElementException nse) {
-            throw new IllegalArgumentException("Invalid line command. Use format L x1 y1 x2 y2 e.g. L 10 12 10 16");
+            throw new IllegalArgumentException("Invalid line command. Use format L x1 y1 x2 y2 e.g. L 10 12 10 16",nse);
         }
         return Canvas.getCurrentCanvas().toString();
     }

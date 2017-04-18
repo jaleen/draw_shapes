@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class CanvasCommand extends Command {
     private static final String commandName = "C";
     private CanvasMarker canvasMarker = null;
-    private Canvas currentCanvas = null;
+
 
     protected CanvasCommand(CanvasMarker canvasMarker) {
         super(commandName);
@@ -24,19 +24,19 @@ public class CanvasCommand extends Command {
         if (arguments == null) {
             throw new IllegalArgumentException("Incorrect Canvas arguments. It should be in format 'c width height' e.g. c 5 7");
         }
-        Scanner scanner = new Scanner(arguments);
+
 
         int height;
         int width;
 
-        try {
+        try(Scanner scanner = new Scanner(arguments)) {
             width = scanner.nextInt();
             height = scanner.nextInt();
         } catch (NoSuchElementException noSuchElementException) {
-            throw new IllegalArgumentException("Incorrect Canvas arguments. It should be in format 'c width height' e.g. c 5 7");
+            throw new IllegalArgumentException("Incorrect Canvas arguments. It should be in format 'c width height' e.g. c 5 7", noSuchElementException);
         }
 
-        currentCanvas = new Canvas(width, height);
+        Canvas currentCanvas = Canvas.getInstance(width, height);
         canvasMarker.markBoundary(currentCanvas);
 
         return currentCanvas.toString();

@@ -1,7 +1,5 @@
 package com.jalalsoft.shapes.marker;
 
-import com.jalalsoft.shapes.command.ColourFillCommand;
-import com.jalalsoft.shapes.command.Command;
 import com.jalalsoft.shapes.model.Canvas;
 
 /**
@@ -28,36 +26,36 @@ public class ColourFillMarker {
 
     private void fillWest(int x, int y, char colour, Canvas canvas) {
 
-        x--;
-        if(!canvas.isWithinCanvas(x,y)){
+        int x1 = x-1;
+        if(!canvas.isWithinCanvas(x1,y)){
             return;
         }
-        floodFill(x,y,colour,canvas);
+        floodFill(x1,y,colour,canvas);
     }
 
 
 
     private void fillEast(int x, int y, char colour, Canvas canvas) {
-        x++;
-        if(!canvas.isWithinCanvas(x,y)){
+        int x1 = x+1;
+        if(!canvas.isWithinCanvas(x1,y)){
             return;
         }
-        floodFill(x,y,colour,canvas);
+        floodFill(x1,y,colour,canvas);
     }
 
     private void fillSouth(int x, int y, char colour, Canvas canvas) {
-        y++;
-        if(!canvas.isWithinCanvas(x,y)){
+        int y1 = y+1;
+        if(!canvas.isWithinCanvas(x,y1)){
             return;
         }
-        floodFill(x,y,colour,canvas);
+        floodFill(x,y1,colour,canvas);
     }
 
     private void fillNorth(int x, int y, char colour, Canvas canvas) {
-        y--;
-        if(!canvas.isWithinCanvas(x,y)){
+        int y1 = y-1;
+        if(!canvas.isWithinCanvas(x,y1)){
             return;
         }
-        floodFill(x,y,colour,canvas);
+        floodFill(x,y1,colour,canvas);
     }
 }

@@ -2,7 +2,6 @@ package com.jalalsoft.shapes.marker;
 
 import com.jalalsoft.shapes.model.Canvas;
 import com.jalalsoft.shapes.model.Line;
-import com.jalalsoft.shapes.validator.LineValidator;
 
 /**
  * Created by jalal.deen on 12/04/2017.

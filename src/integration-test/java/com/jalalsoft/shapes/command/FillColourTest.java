@@ -22,7 +22,7 @@ public class FillColourTest {
         int width = 4;
         int height = 4;
         Command command =  new ColourFillCommand(new ColourFillMarker());
-        Canvas canvas = new Canvas(width, height);
+        Canvas canvas = Canvas.getInstance(width, height);
         command.execute(fillCommandArgs);
 
         String expected = "      "+nl+
