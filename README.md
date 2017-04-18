@@ -1,7 +1,7 @@
 # Draw Shapes
 This is a simple console application for drawing the shapes.
 ## Installation
-After unzipping source folder, at root directory enter following command in a shell.
+clone the source code using git clone git@github.com:jaleen/draw_shapes.git. Then at root directory enter following command in a shell.
 $ ./gradlew build run
 or if using windows run following on command prompt.
 gradlew.bat build run
